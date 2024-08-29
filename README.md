@@ -1,0 +1,1 @@
+# trashify-ai-mirco
