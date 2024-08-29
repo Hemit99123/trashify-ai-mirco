@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package unary;
+
+service Trashify {
+  // The procedure that will get the nearest coordinates
+  rpc GetNearestCoor(CoordinateSet) returns (NearestLocationResponse) {}
+}
+
+// Message to request nearest coordinates based on a set of coordinates
+message CoordinateSet {
+  repeated Coordinate coordinates = 1; // List of coordinates
+  Coordinate query_location = 2;        // Location to query against the set
+}
+
+// Message representing a coordinate with latitude and longitude
+message Coordinate {
+  double latitude = 1;
+  double longitude = 2;
+}
+
+// Message to respond with the nearest location and its distance
+message NearestLocationResponse {
+  Coordinate nearest_location = 1; // The closest location's coordinates
+  double distance = 2;            // Distance in radians or meters
+}
