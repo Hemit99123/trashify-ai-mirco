@@ -3,7 +3,7 @@
 import grpc
 import warnings
 
-import main_pb2 as main__pb2
+from proto import main_pb2 as proto_dot_main__pb2
 
 GRPC_GENERATED_VERSION = '1.66.1'
 GRPC_VERSION = grpc.__version__
@@ -18,7 +18,7 @@ except ImportError:
 if _version_not_supported:
     raise RuntimeError(
         f'The grpc package installed is at version {GRPC_VERSION},'
-        + f' but the generated code in main_pb2_grpc.py depends on'
+        + f' but the generated code in proto/main_pb2_grpc.py depends on'
         + f' grpcio>={GRPC_GENERATED_VERSION}.'
         + f' Please upgrade your grpc module to grpcio>={GRPC_GENERATED_VERSION}'
         + f' or downgrade your generated code using grpcio-tools<={GRPC_VERSION}.'
@@ -36,8 +36,8 @@ class TrashifyStub(object):
         """
         self.GetNearestCoor = channel.unary_unary(
                 '/unary.Trashify/GetNearestCoor',
-                request_serializer=main__pb2.CoordinateSet.SerializeToString,
-                response_deserializer=main__pb2.NearestLocationResponse.FromString,
+                request_serializer=proto_dot_main__pb2.CoordinateSet.SerializeToString,
+                response_deserializer=proto_dot_main__pb2.NearestLocationResponse.FromString,
                 _registered_method=True)
 
 
@@ -45,8 +45,7 @@ class TrashifyServicer(object):
     """Missing associated documentation comment in .proto file."""
 
     def GetNearestCoor(self, request, context):
-        """The procedure that will get the nearest coordinates
-        """
+        """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
@@ -56,8 +55,8 @@ def add_TrashifyServicer_to_server(servicer, server):
     rpc_method_handlers = {
             'GetNearestCoor': grpc.unary_unary_rpc_method_handler(
                     servicer.GetNearestCoor,
-                    request_deserializer=main__pb2.CoordinateSet.FromString,
-                    response_serializer=main__pb2.NearestLocationResponse.SerializeToString,
+                    request_deserializer=proto_dot_main__pb2.CoordinateSet.FromString,
+                    response_serializer=proto_dot_main__pb2.NearestLocationResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -85,8 +84,8 @@ class Trashify(object):
             request,
             target,
             '/unary.Trashify/GetNearestCoor',
-            main__pb2.CoordinateSet.SerializeToString,
-            main__pb2.NearestLocationResponse.FromString,
+            proto_dot_main__pb2.CoordinateSet.SerializeToString,
+            proto_dot_main__pb2.NearestLocationResponse.FromString,
             options,
             channel_credentials,
             insecure,
