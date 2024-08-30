@@ -1,4 +1,4 @@
-# Trashify-AI-Mirco Documentation
+# Trashify-AI-Mircoservice Documentation
 
 ## Overview
 
