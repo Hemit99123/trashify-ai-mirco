@@ -9,7 +9,6 @@ class TrashifyAIService(main_pb2_grpc.TrashifyServicer):
     def GetNearestCoor(self, request, context):
         # Convert repeated double coor from the request to a NumPy array
         coordinates_list = [list(coord.coor) for coord in request.coordinates]
-        print(coordinates_list)
         
         # Ensure that we have at least one coordinate
         if not coordinates_list:
